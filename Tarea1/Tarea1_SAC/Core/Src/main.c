@@ -1,10 +1,13 @@
 /* USER CODE BEGIN Header */
 /**
+ *
+ * JUAN ORELLANA CARRETERO
   ******************************************************************************
   * @file           : main.c
   * @brief          : Main program body
   ******************************************************************************
   * @attention
+  *
   *
   * Copyright (c) 2024 STMicroelectronics.
   * All rights reserved.
