@@ -108,7 +108,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
+  while (1) //FALTAN COMENTARIOS EN EL CODIGO PARA VER QUE HACE EL MISMO EN CADA PARTE.
   {
 	  if(flag == 1){
 		  BSP_LED_Toggle(LED1);
@@ -245,11 +245,7 @@ void HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin)
 {
   if (GPIO_Pin == BUTTON_USER_PIN && flag == 0)
   {
-
-
 	  flag = 1;
-
-
   }else{
 	  flag = 0;
   }
