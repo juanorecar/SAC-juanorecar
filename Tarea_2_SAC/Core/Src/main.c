@@ -59,7 +59,7 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+Estado estadoActual = ESTADO_0;
 /* USER CODE END 0 */
 
 /**
@@ -200,10 +200,43 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin){
-	if (GPIO_Pin == BUTTON_USER_PIN)
-	  {
 
-	  }
+	if (GPIO_Pin == boton_azul_Pin){
+		switch (estadoActual){
+		case ESTADO_0:
+			estadoActual = ESTADO_3;
+			break;
+		case ESTADO_1:
+			estadoActual = ESTADO_0;
+			break;
+		case ESTADO_2:
+			estadoActual = ESTADO_1;
+			break;
+		case ESTADO_3:
+			estadoActual = ESTADO_2;
+			break;
+		default:
+			break;
+		}
+	}
+	if (GPIO_Pin == boton2_Pin){
+			switch (estadoActual){
+			case ESTADO_0:
+				estadoActual = ESTADO_1;
+				break;
+			case ESTADO_1:
+				estadoActual = ESTADO_2;
+				break;
+			case ESTADO_2:
+				estadoActual = ESTADO_3;
+				break;
+			case ESTADO_3:
+				estadoActual = ESTADO_0;
+				break;
+			default:
+				break;
+			}
+		}
 }
 /* USER CODE END 4 */
 
