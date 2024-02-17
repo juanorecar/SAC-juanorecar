@@ -98,6 +98,27 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  HAL_GPIO_TogglePin(led1_GPIO_Port, led1_Pin);
+	  HAL_Delay(1000);
+
+	  if(estadoActual == ESTADO_0){
+		  HAL_GPIO_TogglePin(led1_GPIO_Port, led1_Pin);
+		  HAL_Delay(1000);
+	  }
+
+	  if(estadoActual == ESTADO_1){
+		  HAL_GPIO_TogglePin(led1_GPIO_Port, led1_Pin);
+		  HAL_Delay(500);
+	  }
+	  if(estadoActual == ESTADO_2){
+		  HAL_GPIO_TogglePin(led1_GPIO_Port, led1_Pin);
+	  	  HAL_Delay(1500);
+	  	  }
+	  if(estadoActual == ESTADO_3){
+		  HAL_GPIO_TogglePin(led1_GPIO_Port, led1_Pin);
+	  	  HAL_Delay(2000);
+	  	  }
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -204,6 +225,8 @@ void HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin){
 	if (GPIO_Pin == boton_azul_Pin){
 		switch (estadoActual){
 		case ESTADO_0:
+			//HAL_GPIO_TogglePin(led1_GPIO_Port, led1_Pin);
+			//HAL_Delay(1000);
 			estadoActual = ESTADO_3;
 			break;
 		case ESTADO_1:
