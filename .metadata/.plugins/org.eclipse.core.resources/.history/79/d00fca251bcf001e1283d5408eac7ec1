@@ -98,7 +98,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
+	  printf("SSSSSSASAS");
 	  HAL_GPIO_TogglePin(led1_GPIO_Port, led1_Pin);
 	  HAL_Delay(1000);
 

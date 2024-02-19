@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "stdio.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,7 +98,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
 	  HAL_GPIO_TogglePin(led1_GPIO_Port, led1_Pin);
 	  HAL_Delay(1000);
 
@@ -228,19 +227,15 @@ void HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin){
 		case ESTADO_0:
 			//HAL_GPIO_TogglePin(led1_GPIO_Port, led1_Pin);
 			//HAL_Delay(1000);
-			printf("El estado actual es: ESTADO 0");
 			estadoActual = ESTADO_3;
 			break;
 		case ESTADO_1:
-			printf("El estado actual es: ESTADO 1");
 			estadoActual = ESTADO_0;
 			break;
 		case ESTADO_2:
-			printf("El estado actual es: ESTADO 2");
 			estadoActual = ESTADO_1;
 			break;
 		case ESTADO_3:
-			printf("El estado actual es: ESTADO 3");
 			estadoActual = ESTADO_2;
 			break;
 		default:
