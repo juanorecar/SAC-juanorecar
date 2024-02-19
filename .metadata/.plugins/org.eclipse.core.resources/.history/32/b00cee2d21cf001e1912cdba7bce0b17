@@ -110,11 +110,11 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1) //FALTAN COMENTARIOS EN EL CODIGO PARA VER QUE HACE EL MISMO EN CADA PARTE.
   {
-	  if(flag == 1){ //Comprobamos que se pulsa el boton
-		  BSP_LED_Toggle(LED1); //Si el boton se ha pulsado, alteramos el estado del LED
-		  HAL_Delay(500);		//junto con un delay
+	  if(flag == 1){
+		  BSP_LED_Toggle(LED1);
+		  HAL_Delay(500);
 	  }else{
-		  BSP_LED_Off(LED1); 	// Si no, apagamos el led
+		  BSP_LED_Off(LED1);
 	  }
 
     /* USER CODE END WHILE */
@@ -243,14 +243,11 @@ static void EXTI13_IRQHandler_Config(void)
   */
 void HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin)
 {
-  if (GPIO_Pin == BUTTON_USER_PIN && flag == 0) //Interrupcion para que cuando se pulse boton se active la flag y empiece el bucle
+  if (GPIO_Pin == BUTTON_USER_PIN && flag == 0)
   {
 	  flag = 1;
-
   }else{
-
 	  flag = 0;
-
   }
 }
 /* USER CODE END 4 */

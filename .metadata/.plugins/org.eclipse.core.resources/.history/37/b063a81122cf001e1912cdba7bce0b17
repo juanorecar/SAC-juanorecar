@@ -243,14 +243,12 @@ static void EXTI13_IRQHandler_Config(void)
   */
 void HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin)
 {
-  if (GPIO_Pin == BUTTON_USER_PIN && flag == 0) //Interrupcion para que cuando se pulse boton se active la flag y empiece el bucle
+  if (GPIO_Pin == BUTTON_USER_PIN && flag == 0) //
   {
 	  flag = 1;
 
   }else{
-
 	  flag = 0;
-
   }
 }
 /* USER CODE END 4 */
