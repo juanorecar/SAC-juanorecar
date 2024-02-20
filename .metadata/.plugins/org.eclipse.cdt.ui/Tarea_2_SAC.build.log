@@ -1,17 +1,99 @@
-12:36:20 **** Incremental Build of configuration Debug for project Tarea_2_SAC ****
+21:25:30 **** Incremental Build of configuration Debug for project Tarea_2_SAC ****
 make -j20 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L552xx -c -I../Core/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Tarea_2_SAC.elf" @"objects.list"   -mcpu=cortex-m33 -T"C:\Users\Juan\Documents\GitHub\SAC-juanorecar\Tarea_2_SAC\STM32L552ZETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="Tarea_2_SAC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Tarea_2_SAC.elf
- 
-arm-none-eabi-size  Tarea_2_SAC.elf 
-arm-none-eabi-objdump -h -S Tarea_2_SAC.elf  > "Tarea_2_SAC.list"
-   text	   data	    bss	    dec	    hex	filename
-  12288	    112	   1912	  14312	   37e8	Tarea_2_SAC.elf
-Finished building: default.size.stdout
- 
-Finished building: Tarea_2_SAC.list
- 
+../Core/Src/main.c: In function 'SystemClock_Config':
+../Core/Src/main.c:210:3: warning: implicit declaration of function 'HAL_PWREx_ConfigSupply'; did you mean 'HAL_PWREx_ConfigPVM'? [-Wimplicit-function-declaration]
+  210 |   HAL_PWREx_ConfigSupply(PWR_LDO_SUPPLY);
+      |   ^~~~~~~~~~~~~~~~~~~~~~
+      |   HAL_PWREx_ConfigPVM
+../Core/Src/main.c:210:26: error: 'PWR_LDO_SUPPLY' undeclared (first use in this function)
+  210 |   HAL_PWREx_ConfigSupply(PWR_LDO_SUPPLY);
+      |                          ^~~~~~~~~~~~~~
+../Core/Src/main.c:210:26: note: each undeclared identifier is reported only once for each function it appears in
+In file included from ../Core/Inc/stm32l5xx_hal_conf.h:358,
+                 from ../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal.h:30,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Core/Src/main.c:216:29: error: 'PWR_FLAG_VOSRDY' undeclared (first use in this function); did you mean 'PWR_FLAG_VOSF'?
+  216 |   while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
+      |                             ^~~~~~~~~~~~~~~
+../Drivers/STM32L5xx_HAL_Driver/Inc/stm32l5xx_hal_pwr.h:226:54: note: in definition of macro '__HAL_PWR_GET_FLAG'
+  226 | #define __HAL_PWR_GET_FLAG(__FLAG__)  ( ((((uint8_t)(__FLAG__)) >> 5U) == 1)  ?\
+      |                                                      ^~~~~~~~
+../Core/Src/main.c:230:25: error: 'RCC_PLLInitTypeDef' has no member named 'PLLRGE'; did you mean 'PLLR'?
+  230 |   RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_1;
+      |                         ^~~~~~
+      |                         PLLR
+../Core/Src/main.c:230:34: error: 'RCC_PLL1VCIRANGE_1' undeclared (first use in this function); did you mean 'RCC_CR_MSIRANGE_1'?
+  230 |   RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_1;
+      |                                  ^~~~~~~~~~~~~~~~~~
+      |                                  RCC_CR_MSIRANGE_1
+../Core/Src/main.c:231:24: error: 'RCC_PLLInitTypeDef' has no member named 'PLLVCOSEL'
+  231 |   RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
+      |                        ^
+../Core/Src/main.c:231:37: error: 'RCC_PLL1VCOWIDE' undeclared (first use in this function)
+  231 |   RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
+      |                                     ^~~~~~~~~~~~~~~
+../Core/Src/main.c:232:24: error: 'RCC_PLLInitTypeDef' has no member named 'PLLFRACN'
+  232 |   RCC_OscInitStruct.PLL.PLLFRACN = 0;
+      |                        ^
+../Core/Src/main.c:242:32: error: 'RCC_CLOCKTYPE_D3PCLK1' undeclared (first use in this function); did you mean 'RCC_CLOCKTYPE_PCLK1'?
+  242 |                               |RCC_CLOCKTYPE_D3PCLK1|RCC_CLOCKTYPE_D1PCLK1;
+      |                                ^~~~~~~~~~~~~~~~~~~~~
+      |                                RCC_CLOCKTYPE_PCLK1
+../Core/Src/main.c:242:54: error: 'RCC_CLOCKTYPE_D1PCLK1' undeclared (first use in this function); did you mean 'RCC_CLOCKTYPE_PCLK1'?
+  242 |                               |RCC_CLOCKTYPE_D3PCLK1|RCC_CLOCKTYPE_D1PCLK1;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~~
+      |                                                      RCC_CLOCKTYPE_PCLK1
+../Core/Src/main.c:244:21: error: 'RCC_ClkInitTypeDef' has no member named 'SYSCLKDivider'; did you mean 'AHBCLKDivider'?
+  244 |   RCC_ClkInitStruct.SYSCLKDivider = RCC_SYSCLK_DIV1;
+      |                     ^~~~~~~~~~~~~
+      |                     AHBCLKDivider
+../Core/Src/main.c:246:21: error: 'RCC_ClkInitTypeDef' has no member named 'APB3CLKDivider'; did you mean 'APB1CLKDivider'?
+  246 |   RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;
+      |                     ^~~~~~~~~~~~~~
+      |                     APB1CLKDivider
+../Core/Src/main.c:246:38: error: 'RCC_APB3_DIV2' undeclared (first use in this function); did you mean 'RCC_PLLR_DIV2'?
+  246 |   RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;
+      |                                      ^~~~~~~~~~~~~
+      |                                      RCC_PLLR_DIV2
+../Core/Src/main.c:247:38: error: 'RCC_APB1_DIV2' undeclared (first use in this function); did you mean 'RCC_PLLR_DIV2'?
+  247 |   RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV2;
+      |                                      ^~~~~~~~~~~~~
+      |                                      RCC_PLLR_DIV2
+../Core/Src/main.c:248:38: error: 'RCC_APB2_DIV2' undeclared (first use in this function); did you mean 'RCC_PLLR_DIV2'?
+  248 |   RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
+      |                                      ^~~~~~~~~~~~~
+      |                                      RCC_PLLR_DIV2
+../Core/Src/main.c:249:21: error: 'RCC_ClkInitTypeDef' has no member named 'APB4CLKDivider'; did you mean 'APB1CLKDivider'?
+  249 |   RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
+      |                     ^~~~~~~~~~~~~~
+      |                     APB1CLKDivider
+../Core/Src/main.c:249:38: error: 'RCC_APB4_DIV2' undeclared (first use in this function); did you mean 'RCC_PLLR_DIV2'?
+  249 |   RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
+      |                                      ^~~~~~~~~~~~~
+      |                                      RCC_PLLR_DIV2
+../Core/Src/main.c: In function 'MX_GPIO_Init':
+../Core/Src/main.c:275:28: error: 'LED_GREEN_Pin' undeclared (first use in this function)
+  275 |   HAL_GPIO_WritePin(GPIOB, LED_GREEN_Pin|LED_RED_Pin, GPIO_PIN_RESET);
+      |                            ^~~~~~~~~~~~~
+../Core/Src/main.c:275:42: error: 'LED_RED_Pin' undeclared (first use in this function)
+  275 |   HAL_GPIO_WritePin(GPIOB, LED_GREEN_Pin|LED_RED_Pin, GPIO_PIN_RESET);
+      |                                          ^~~~~~~~~~~
+../Core/Src/main.c:281:17: error: 'B1_GPIO_Port' undeclared (first use in this function); did you mean 'led1_GPIO_Port'?
+  281 |   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
+      |                 ^~~~~~~~~~~~
+      |                 led1_GPIO_Port
+../Core/Src/main.c:287:17: error: 'B2_GPIO_Port' undeclared (first use in this function); did you mean 'led2_GPIO_Port'?
+  287 |   HAL_GPIO_Init(B2_GPIO_Port, &GPIO_InitStruct);
+      |                 ^~~~~~~~~~~~
+      |                 led2_GPIO_Port
+../Core/Src/main.c:300:24: error: 'EXTI15_10_IRQn' undeclared (first use in this function); did you mean 'EXTI15_IRQn'?
+  300 |   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+      |                        ^~~~~~~~~~~~~~
+      |                        EXTI15_IRQn
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j20 all" terminated with exit code 2. Build might be incomplete.
 
-12:36:21 Build Finished. 0 errors, 0 warnings. (took 1s.30ms)
+21:25:31 Build Failed. 22 errors, 1 warnings. (took 444ms)
 

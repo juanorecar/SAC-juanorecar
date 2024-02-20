@@ -1,84 +1,37 @@
-20:09:26 **** Incremental Build of configuration Debug for project Tarea_2_SAC ****
+13:30:55 **** Incremental Build of configuration Debug for project SAC_Tarea2 ****
 make -j20 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L552xx -c -I../Core/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Tarea_2_SAC.elf" @"objects.list"   -mcpu=cortex-m33 -T"C:\Users\Juan\Documents\GitHub\SAC-juanorecar\Tarea_2_SAC\STM32L552ZETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="Tarea_2_SAC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Tarea_2_SAC.elf
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L552xx -c -I../Core/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/sysmem.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32l5xx.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L552xx -c -I../Core/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32l5xx.d" -MT"Core/Src/system_stm32l5xx.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32l5xx.o"
+arm-none-eabi-gcc -o "SAC_Tarea2.elf" @"objects.list"   -mcpu=cortex-m33 -T"C:\Users\Juan\Documents\GitHub\SAC-juanorecar\SAC_Tarea2\STM32L552ZCTXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="SAC_Tarea2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SAC_Tarea2.elf
  
-arm-none-eabi-size  Tarea_2_SAC.elf 
-arm-none-eabi-objdump -h -S Tarea_2_SAC.elf  > "Tarea_2_SAC.list"
+arm-none-eabi-size  SAC_Tarea2.elf 
+arm-none-eabi-objdump -h -S SAC_Tarea2.elf  > "SAC_Tarea2.list"
    text	   data	    bss	    dec	    hex	filename
-   8072	     20	   1572	   9664	   25c0	Tarea_2_SAC.elf
+   7812	     20	   1572	   9404	   24bc	SAC_Tarea2.elf
 Finished building: default.size.stdout
  
-Finished building: Tarea_2_SAC.list
+Finished building: SAC_Tarea2.list
  
-20:09:30 **** Incremental Build of configuration Debug for project Tarea_2_SAC ****
+13:31:05 **** Incremental Build of configuration Debug for project SAC_Tarea2 ****
 make -j20 all 
-arm-none-eabi-size  Tarea_2_SAC.elf 
+arm-none-eabi-size  SAC_Tarea2.elf 
    text	   data	    bss	    dec	    hex	filename
-   8072	     20	   1572	   9664	   25c0	Tarea_2_SAC.elf
+   7812	     20	   1572	   9404	   24bc	SAC_Tarea2.elf
 Finished building: default.size.stdout
  
-20:10:20 **** Incremental Build of configuration Debug for project Tarea_2_SAC ****
-make -j20 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L552xx -c -I../Core/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Tarea_2_SAC.elf" @"objects.list"   -mcpu=cortex-m33 -T"C:\Users\Juan\Documents\GitHub\SAC-juanorecar\Tarea_2_SAC\STM32L552ZETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="Tarea_2_SAC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Tarea_2_SAC.elf
- 
-arm-none-eabi-size  Tarea_2_SAC.elf 
-arm-none-eabi-objdump -h -S Tarea_2_SAC.elf  > "Tarea_2_SAC.list"
-   text	   data	    bss	    dec	    hex	filename
-   8088	     20	   1572	   9680	   25d0	Tarea_2_SAC.elf
-Finished building: default.size.stdout
- 
-Finished building: Tarea_2_SAC.list
- 
-20:11:10 **** Incremental Build of configuration Debug for project Tarea_2_SAC ****
+13:32:44 **** Incremental Build of configuration Debug for project SAC_Tarea2 ****
 make -j20 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L552xx -c -I../Core/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Tarea_2_SAC.elf" @"objects.list"   -mcpu=cortex-m33 -T"C:\Users\Juan\Documents\GitHub\SAC-juanorecar\Tarea_2_SAC\STM32L552ZETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="Tarea_2_SAC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Tarea_2_SAC.elf
+arm-none-eabi-gcc -o "SAC_Tarea2.elf" @"objects.list"   -mcpu=cortex-m33 -T"C:\Users\Juan\Documents\GitHub\SAC-juanorecar\SAC_Tarea2\STM32L552ZCTXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="SAC_Tarea2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SAC_Tarea2.elf
  
-arm-none-eabi-size  Tarea_2_SAC.elf 
-arm-none-eabi-objdump -h -S Tarea_2_SAC.elf  > "Tarea_2_SAC.list"
+arm-none-eabi-size  SAC_Tarea2.elf 
+arm-none-eabi-objdump -h -S SAC_Tarea2.elf  > "SAC_Tarea2.list"
    text	   data	    bss	    dec	    hex	filename
-   8104	     20	   1572	   9696	   25e0	Tarea_2_SAC.elf
+   7820	     20	   1572	   9412	   24c4	SAC_Tarea2.elf
 Finished building: default.size.stdout
  
-Finished building: Tarea_2_SAC.list
- 
-12:30:05 **** Incremental Build of configuration Debug for project Tarea_2_SAC ****
-make -j20 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L552xx -c -I../Core/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Tarea_2_SAC.elf" @"objects.list"   -mcpu=cortex-m33 -T"C:\Users\Juan\Documents\GitHub\SAC-juanorecar\Tarea_2_SAC\STM32L552ZETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="Tarea_2_SAC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Tarea_2_SAC.elf
- 
-arm-none-eabi-size  Tarea_2_SAC.elf 
-arm-none-eabi-objdump -h -S Tarea_2_SAC.elf  > "Tarea_2_SAC.list"
-   text	   data	    bss	    dec	    hex	filename
-  12268	    112	   1912	  14292	   37d4	Tarea_2_SAC.elf
-Finished building: default.size.stdout
- 
-Finished building: Tarea_2_SAC.list
- 
-12:35:01 **** Incremental Build of configuration Debug for project Tarea_2_SAC ****
-make -j20 all 
-arm-none-eabi-size  Tarea_2_SAC.elf 
-   text	   data	    bss	    dec	    hex	filename
-  12268	    112	   1912	  14292	   37d4	Tarea_2_SAC.elf
-Finished building: default.size.stdout
- 
-12:36:20 **** Incremental Build of configuration Debug for project Tarea_2_SAC ****
-make -j20 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L552xx -c -I../Core/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Tarea_2_SAC.elf" @"objects.list"   -mcpu=cortex-m33 -T"C:\Users\Juan\Documents\GitHub\SAC-juanorecar\Tarea_2_SAC\STM32L552ZETXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="Tarea_2_SAC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Tarea_2_SAC.elf
- 
-arm-none-eabi-size  Tarea_2_SAC.elf 
-arm-none-eabi-objdump -h -S Tarea_2_SAC.elf  > "Tarea_2_SAC.list"
-   text	   data	    bss	    dec	    hex	filename
-  12288	    112	   1912	  14312	   37e8	Tarea_2_SAC.elf
-Finished building: default.size.stdout
- 
-Finished building: Tarea_2_SAC.list
+Finished building: SAC_Tarea2.list
  
