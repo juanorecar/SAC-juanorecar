@@ -26,7 +26,12 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+typedef enum{
+	ESTADO_0,
+	ESTADO_1,
+	ESTADO_2,
+	ESTADO_3
+} Estado;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -57,6 +62,9 @@ static void MX_GPIO_Init(void);
 uint16_t estadosBoton1 = 0;
 uint16_t estadosBoton2 = 0;
 uint16_t estadosLed = 0;
+uint8_t flag=0;
+uint8_t flag1=0;
+uint8_t estadoActual=0;
 /* USER CODE END 0 */
 
 /**
@@ -98,25 +106,63 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  switch(estadosLed)
-	  	  {
-	  	  case 0:
-	  		  HAL_GPIO_WritePin(Led1_GPIO_Port,Led1_Pin, RESET);
-	  		  HAL_GPIO_WritePin(Led2_GPIO_Port,Led2_Pin,SET);
-	  		  break;
-	  	  case 1:
-	  		  HAL_GPIO_WritePin(Led1_GPIO_Port,Led1_Pin,SET);
-	  		  HAL_GPIO_WritePin(Led2_GPIO_Port,Led2_Pin,RESET);
-	  		break;
-	  	  case 2:
-	  		  HAL_GPIO_WritePin(Led1_GPIO_Port,Led1_Pin,SET);
-	  		  HAL_GPIO_WritePin(Led2_GPIO_Port,Led2_Pin,SET);
-	  		break;
-	  	  case 3:
-	  		  HAL_GPIO_WritePin(Led1_GPIO_Port,Led1_Pin,RESET);
-	  		  HAL_GPIO_WritePin(Led2_GPIO_Port,Led2_Pin,RESET);
-	  		break;
+	  if(flag==1){
+		  switch(estadoActual)
+		  	  	  {
+		  	  	  case ESTADO_1:
+		  	  		  printf("Estado 0");
+		  	  		  estadoActual = ESTADO_0;
+		  	  		  HAL_GPIO_WritePin(Led1_GPIO_Port,Led1_Pin,RESET);
+		  	  		  HAL_GPIO_WritePin(Led2_GPIO_Port,Led2_Pin,SET);
+		  	  		  break;
+		  	  	  case ESTADO_2:
+		  	  		  printf("Estado 1");
+		  	  		estadoActual = ESTADO_1;
+		  	  		  HAL_GPIO_WritePin(Led1_GPIO_Port,Led1_Pin,SET);
+		  	  		  HAL_GPIO_WritePin(Led2_GPIO_Port,Led2_Pin,RESET);
+		  	  		break;
+		  	  	  case ESTADO_3:
+		  	  		printf("Estado 2");
+		  	  		estadoActual = ESTADO_2;
+		  	  		  HAL_GPIO_WritePin(Led1_GPIO_Port,Led1_Pin,SET);
+		  	  		  HAL_GPIO_WritePin(Led2_GPIO_Port,Led2_Pin,SET);
+		  	  		break;
+		  	  	  case ESTADO_0:
+		  	  		printf("Estado 3");
+		  	  		estadoActual = ESTADO_3;
+		  	  		  HAL_GPIO_WritePin(Led1_GPIO_Port,Led1_Pin,RESET);
+		  	  		  HAL_GPIO_WritePin(Led2_GPIO_Port,Led2_Pin,RESET);
+		  	  		break;
+		  	  	  }
+		  flag=0;
+	  }
+	  if(flag1==1){
+	  		  switch(estadoActual)
+	  		  	  	  {
+	  		  	  	  case ESTADO_3:
+	  		  	  	estadoActual = ESTADO_0;
+	  		  	  		  HAL_GPIO_WritePin(Led1_GPIO_Port,Led1_Pin,RESET);
+	  		  	  		  HAL_GPIO_WritePin(Led2_GPIO_Port,Led2_Pin,SET);
+	  		  	  		  break;
+	  		  	  	  case ESTADO_0:
+	  		  	  	estadoActual = ESTADO_1;
+	  		  	  		  HAL_GPIO_WritePin(Led1_GPIO_Port,Led1_Pin,SET);
+	  		  	  		  HAL_GPIO_WritePin(Led2_GPIO_Port,Led2_Pin,RESET);
+	  		  	  		break;
+	  		  	  	  case ESTADO_1:
+	  		  	  	estadoActual = ESTADO_2;
+	  		  	  		  HAL_GPIO_WritePin(Led1_GPIO_Port,Led1_Pin,SET);
+	  		  	  		  HAL_GPIO_WritePin(Led2_GPIO_Port,Led2_Pin,SET);
+	  		  	  		break;
+	  		  	  	  case ESTADO_2:
+	  		  	  	estadoActual = ESTADO_3;
+	  		  	  		  HAL_GPIO_WritePin(Led1_GPIO_Port,Led1_Pin,RESET);
+	  		  	  		  HAL_GPIO_WritePin(Led2_GPIO_Port,Led2_Pin,RESET);
+	  		  	  		break;
+	  		  	  	  }
+	  		  flag1=0;
 	  	  }
+
   }
   /* USER CODE END 3 */
 }
@@ -178,6 +224,7 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
@@ -191,6 +238,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(Boton1_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : Boton2_Pin */
+  GPIO_InitStruct.Pin = Boton2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(Boton2_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : Led1_Pin */
   GPIO_InitStruct.Pin = Led1_Pin;
@@ -210,6 +263,9 @@ static void MX_GPIO_Init(void)
   HAL_NVIC_SetPriority(EXTI13_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI13_IRQn);
 
+  HAL_NVIC_SetPriority(EXTI14_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI14_IRQn);
+
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
@@ -217,13 +273,19 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin){
 	if(GPIO_Pin == Boton1_Pin){
-		if(estadosLed == 3)
-				{
-					estadosLed = 0;
-				}else{
-					estadosLed ++;
-				}
+		flag=1;
 	}
+	if(GPIO_Pin == Boton2_Pin){
+		flag1=1;
+		}
+}
+
+int _write(int file, char *ptr, int len){
+	int DataIdx;
+	for(DataIdx=0; DataIdx<len; DataIdx++){
+		ITM_SendChar(*ptr++);
+	}
+	return len;
 }
 /* USER CODE END 4 */
 

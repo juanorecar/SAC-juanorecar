@@ -1,17 +1,29 @@
-13:32:44 **** Incremental Build of configuration Debug for project SAC_Tarea2 ****
+17:17:15 **** Incremental Build of configuration Debug for project SAC_Tarea2 ****
 make -j20 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L552xx -c -I../Core/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:113:43: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  113 |                                           printf("Estado 0");
+      |                                           ^~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:113:43: warning: incompatible implicit declaration of built-in function 'printf' [-Wbuiltin-declaration-mismatch]
+  113 |                                           printf("Estado 0");
+      |                                           ^~~~~~
+../Core/Src/main.c:113:43: note: include '<stdio.h>' or provide a declaration of 'printf'
 arm-none-eabi-gcc -o "SAC_Tarea2.elf" @"objects.list"   -mcpu=cortex-m33 -T"C:\Users\Juan\Documents\GitHub\SAC-juanorecar\SAC_Tarea2\STM32L552ZCTXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="SAC_Tarea2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: SAC_Tarea2.elf
  
 arm-none-eabi-size  SAC_Tarea2.elf 
 arm-none-eabi-objdump -h -S SAC_Tarea2.elf  > "SAC_Tarea2.list"
    text	   data	    bss	    dec	    hex	filename
-   7820	     20	   1572	   9412	   24c4	SAC_Tarea2.elf
+  12288	    112	   1912	  14312	   37e8	SAC_Tarea2.elf
 Finished building: default.size.stdout
  
 Finished building: SAC_Tarea2.list
  
 
-13:32:45 Build Finished. 0 errors, 0 warnings. (took 539ms)
+17:17:16 Build Finished. 0 errors, 2 warnings. (took 982ms)
 
