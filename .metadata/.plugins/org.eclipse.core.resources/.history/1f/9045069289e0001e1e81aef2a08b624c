@@ -49,9 +49,7 @@ DMA_HandleTypeDef hdma_dac1_ch1;
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
-#define ADC_CONVERTED_DATA_BUFFER_SIZE 500
-#define DIGITAL_SCALE_12BITS ((uint32_t) 0xFFF)
-#define DAC_CONVERTED_DATA_BUFFER_SIZE 128
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -72,8 +70,6 @@ static void MX_ICACHE_Init(void);
 uint16_t aADCxConvertedData[ADC_CONVERTED_DATA_BUFFER_SIZE];
 
 void Alternar_DAC(void);
-
-uint16_t Wave_LUT[DAC_CONVERTED_DATA_BUFFER_SIZE];
 
 
 /* USER CODE END 0 */

@@ -49,9 +49,7 @@ DMA_HandleTypeDef hdma_dac1_ch1;
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
-#define ADC_CONVERTED_DATA_BUFFER_SIZE 500
-#define DIGITAL_SCALE_12BITS ((uint32_t) 0xFFF)
-#define DAC_CONVERTED_DATA_BUFFER_SIZE 128
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -70,12 +68,6 @@ static void MX_ICACHE_Init(void);
 /* USER CODE BEGIN 0 */
 
 uint16_t aADCxConvertedData[ADC_CONVERTED_DATA_BUFFER_SIZE];
-
-void Alternar_DAC(void);
-
-uint16_t Wave_LUT[DAC_CONVERTED_DATA_BUFFER_SIZE];
-
-
 /* USER CODE END 0 */
 
 /**
@@ -112,7 +104,7 @@ int main(void)
   MX_DAC1_Init();
   MX_ICACHE_Init();
   /* USER CODE BEGIN 2 */
-  Alternar_DAC();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -441,13 +433,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void Alternar_DAC(void)
-{
-	for(int i = 0; i < 128; i++){
-		Wave_LUT[i] = DIGITAL_SCALE_12BITS;
-	}
 
-}
 /* USER CODE END 4 */
 
 /**
