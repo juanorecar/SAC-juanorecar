@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="true"/>
+	</section>
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\Juan\Desktop\Sistemas-de-Adquisicion-y-Control-Tarea-2\Sistemas-de-Adquisicion-y-Control-Tarea-2"/>
+			<item value="C:\Users\Juan\Desktop\SAC-juanorecar-Tarea1 (1)\SAC-juanorecar-Tarea1"/>
+			<item value="C:\Users\Juan\Desktop\SAC-juanorecar-Tarea1 (1)\SAC-juanorecar-Tarea1\SAC-Tarea1\Tarea1SAC\GPIO_EXTI"/>
+			<item value="C:\Users\Juan\Desktop\SAC-juanorecar"/>
+			<item value="C:\Users\Juan\Documents\GitHub\SAC-juanorecar"/>
+			<item value="C:\Users\Juan\Documents\GitHub\SAC-juanorecar\SAC-Tarea1\Tarea1SAC"/>
+			<item value="C:\Users\Juan\Documents\GitHub\SAC-juanorecar\SAC-Tarea1"/>
+		</list>
+	</section>
+</section>
