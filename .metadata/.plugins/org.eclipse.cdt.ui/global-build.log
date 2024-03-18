@@ -1,0 +1,27 @@
+21:06:36 **** Incremental Build of configuration Debug for project SAC_Tarea3 ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L552xx -c -I../Core/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32l5xx_hal_msp.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L552xx -c -I../Core/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc -I../Drivers/STM32L5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L5xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32l5xx_hal_msp.d" -MT"Core/Src/stm32l5xx_hal_msp.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32l5xx_hal_msp.o"
+../Core/Src/main.c: In function 'Crear_LUT':
+../Core/Src/main.c:561:44: warning: implicit declaration of function 'sin' [-Wimplicit-function-declaration]
+  561 |                 LUT[i] = 950 + (int)(950 * sin(2 * PI * i / 50));
+      |                                            ^~~
+../Core/Src/main.c:21:1: note: include '<math.h>' or provide a declaration of 'sin'
+   20 | #include "main.h"
+  +++ |+#include <math.h>
+   21 | 
+../Core/Src/main.c:561:44: warning: incompatible implicit declaration of built-in function 'sin' [-Wbuiltin-declaration-mismatch]
+  561 |                 LUT[i] = 950 + (int)(950 * sin(2 * PI * i / 50));
+      |                                            ^~~
+../Core/Src/main.c:561:44: note: include '<math.h>' or provide a declaration of 'sin'
+arm-none-eabi-gcc -o "SAC_Tarea3.elf" @"objects.list"   -mcpu=cortex-m33 -T"C:\Users\Juan\Documents\GitHub\SAC-juanorecar\SAC_Tarea3\STM32L552ZCTXQ_FLASH.ld" --specs=nosys.specs -Wl,-Map="SAC_Tarea3.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SAC_Tarea3.elf
+ 
+arm-none-eabi-size  SAC_Tarea3.elf 
+arm-none-eabi-objdump -h -S SAC_Tarea3.elf  > "SAC_Tarea3.list"
+   text	   data	    bss	    dec	    hex	filename
+  28444	     20	   3164	  31628	   7b8c	SAC_Tarea3.elf
+Finished building: default.size.stdout
+ 
+Finished building: SAC_Tarea3.list
+ 

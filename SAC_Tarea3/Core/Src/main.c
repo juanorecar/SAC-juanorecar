@@ -47,11 +47,13 @@ DAC_HandleTypeDef hdac1;
 DMA_HandleTypeDef hdma_dac1_ch1;
 
 TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim6;
 
 /* USER CODE BEGIN PV */
 #define ADC_CONVERTED_DATA_BUFFER_SIZE 500
 #define DIGITAL_SCALE_12BITS ((uint32_t) 0xFFF)
 #define DAC_CONVERTED_DATA_BUFFER_SIZE 128
+#define PI 3.14159265358979323846
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -62,6 +64,7 @@ static void MX_ADC1_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_DAC1_Init(void);
 static void MX_ICACHE_Init(void);
+static void MX_TIM6_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -75,7 +78,12 @@ void Alternar_DAC(void);
 
 uint16_t Wave_LUT[DAC_CONVERTED_DATA_BUFFER_SIZE];
 
+uint16_t LUT[50];
+uint16_t LUTC[5];
+uint16_t LUT10[5];
 
+void Crear_LUTC(void);
+void Crear_LUT(void);
 /* USER CODE END 0 */
 
 /**
@@ -111,8 +119,53 @@ int main(void)
   MX_TIM2_Init();
   MX_DAC1_Init();
   MX_ICACHE_Init();
+  MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
-  Alternar_DAC();
+//  	Alternar_DAC();
+    //Crear_LUTC(); //Descomentar esta linea para usar la señal cuadrada
+    Crear_LUT(); //Descomentar esta linea para usar la señal senoidal
+    int j = 0;
+
+    for(int i = 0; i < 50; i = i + 10) //Descomentar este for para crear la LUT10 para la señal senoidal de 10kHz
+    {
+
+  	  LUT10[j] = LUT[i]; //Toma 5 muestras de las 50 que teniamos en la LUT de 1 kHz
+  	  j++;
+    }
+
+
+    if (HAL_TIM_Base_Start(&htim6) != HAL_OK) //Inicialización del timer6 para el DAC, configurado para que active el DAC en el flanco de bajada y a 50 kHz
+       {
+         /* Counter enable error */
+         Error_Handler();
+       }
+
+    if (HAL_TIM_Base_Start(&htim2) != HAL_OK) //Inicializacion del timer2 para el ADC, configurado para que active el ADC en el flanco de bajada y a 50kHz
+    {
+      /* Counter enable error */
+      Error_Handler();
+    }
+
+
+
+
+    if (HAL_DAC_Start_DMA(&hdac1, DAC_CHANNEL_1, (uint32_t *)LUT10, 5, DAC_ALIGN_12B_R) != HAL_OK) //Activo el DAC con DMA para el buffer correpondiente (ahora LUT10 para la señal senoidal de 10kHz, cambiar para probar otras tablas seleccionando el correcto tamaño de buffer, usar LUTC para la señal cuadrada o LUT para la senoidal de 1kHz y cambiar el tamaño de 5 a 50)
+     	     {
+     	       /* Start Error */
+     	       Error_Handler();
+     	     }
+
+    if (HAL_ADC_Start_DMA(&hadc1, (uint32_t *)aADCxConvertedData, ADC_CONVERTED_DATA_BUFFER_SIZE)!= HAL_OK)
+      {
+        /* ADC conversion start error */
+        Error_Handler();
+      }
+
+
+
+
+
+      /* Enable DAC Channel: channel corresponding to ADC channel ADC_CHANNEL_9 */
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -365,6 +418,44 @@ static void MX_TIM2_Init(void)
 }
 
 /**
+  * @brief TIM6 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM6_Init(void)
+{
+
+  /* USER CODE BEGIN TIM6_Init 0 */
+
+  /* USER CODE END TIM6_Init 0 */
+
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM6_Init 1 */
+
+  /* USER CODE END TIM6_Init 1 */
+  htim6.Instance = TIM6;
+  htim6.Init.Prescaler = 109;
+  htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim6.Init.Period = 19;
+  htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim6, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM6_Init 2 */
+
+  /* USER CODE END TIM6_Init 2 */
+
+}
+
+/**
   * Enable DMA controller clock
   */
 static void MX_DMA_Init(void)
@@ -447,6 +538,28 @@ void Alternar_DAC(void)
 		Wave_LUT[i] = DIGITAL_SCALE_12BITS;
 	}
 
+}
+
+void Crear_LUTC(void)
+{
+	for(int i = 0; i < 5; i++)
+	{
+		if(i < 2){
+			LUTC[i] = 0;
+		}
+		else {
+			LUTC[i] = 1830;
+		}
+
+	}
+}
+
+void Crear_LUT(void)
+{
+	for(int i = 0; i < 50; i++)
+	{
+		LUT[i] = 950 + (int)(950 * sin(2 * PI * i / 50));
+	}
 }
 /* USER CODE END 4 */
 
